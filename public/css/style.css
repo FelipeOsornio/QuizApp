@@ -1,0 +1,46 @@
+html, body {
+    overflow-y: hidden;
+}
+
+.resize-logo {
+    min-height: 50px !important;
+}
+
+.top-space {
+    margin-top: 2em
+}
+
+.negative-margin-top {
+    margin-top: -12em;
+}
+
+.is-centered {
+    display: flex;
+    justify-content: center;
+}
+
+.is-flex-column {
+    flex-direction: column;
+}
+
+.is-login-field {
+    font-size: 12pt;
+    margin: 0 0 1em 0;
+}
+
+.margin-horizontal {
+    margin: 1em 0;
+}
+
+.is-xlarge {
+    min-height: calc(80vh - 3.25rem);
+}
+
+.has-shadow {
+    box-shadow: 0 -2px 0 0 #f5f5f5;
+}
+
+.is-white{
+    background-color: white;
+}
+
