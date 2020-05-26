@@ -24,10 +24,7 @@ end
 def make_result_list(items)
   items.map do |item| {
       'Question' => item['Question'],
-      'OptionA' => item['OptionA'],
-      'OptionB' => item['OptionB'],
-      'OptionC' => item['OptionC'],
-      'OptionD' => item['OptionD'],
+      'Options' => item['Options'],
       'Answer' => item['Answer'].to_i,
   }
   end
@@ -112,11 +109,7 @@ def lambda_handler(event:, context:)
     handle_get
 
   when 'POST'
-    if store_question(event['body'])
-      handle_post
-    else
-      handle_bad_request
-    end
+    event['body']
 
   when 'DELETE'
     if delete_question(event['body'])
