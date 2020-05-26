@@ -2,6 +2,7 @@ require 'csv'
 require 'json'
 require 'sinatra'
 require 'faraday'
+require 'daru'
 
 get '/' do
   @title_page = 'Pine app'
@@ -23,6 +24,10 @@ def check_questions
   end
 end
 
+get '/question' do
+  erb :question, layout: :template
+end
+
 post '/question' do
   URL_USERS = 'https://e8wlv8kik5.execute-api.us-east-1.amazonaws.com/default/users'
 
@@ -30,6 +35,7 @@ post '/question' do
       user: params['user'],
       pass: params['pass']
   }
+  
 
   response = Faraday.post(URL_USERS) do |request|
     request.headers['Content-Type'] = 'application/json'
@@ -46,11 +52,24 @@ post '/question' do
 end
 
 def parse_json(csv_file)
-  csv_table = CSV.parse(csv_file, headers: true)
-  puts 'csv table:', csv_table
+  @data_frame = Daru::DataFrame.from_csv(csv_file)
+  @jsonObject = @data_frame.to_json()
 end
 
 post '/upload-csv' do
+  url_questions = "https://idjxy904sl.execute-api.us-east-2.amazonaws.com/default/lambda_questions"
+  
   datafile = params['csv-file']
-  parse_json(datafile['tempfile'])
+  
+  response = Faraday.post(url_questions) do |request|
+    request.headers['Content-Type'] = 'application/json'
+    request.body = parse_json(datafile['tempfile'])
+  end
+  
+  puts response.body , response.status
+  
+  if response.success?
+    puts "EL BIG SE LA COME" 
+  end
+  
 end
