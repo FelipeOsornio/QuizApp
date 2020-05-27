@@ -1,0 +1,23 @@
+<table class="table is-fullwidth">
+  <thead>
+  <tr>
+    <th>Question</th>
+    <th>Option A</th>
+    <th>Option B</th>
+    <th>Option C</th>
+    <th>Option D</th>
+    <th>Answer</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @questions.each do |question| %>
+    <tr>
+      <td class="question-width"><%= question['Question'] %></td>
+      <% question['Options'].each do |option| %>
+        <td><%= option %></td>
+      <% end %>
+      <td><%= question['Options'][question['Answer']] %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
