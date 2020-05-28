@@ -25,7 +25,7 @@ def check_questions
 end
 
 post '/question' do
-  URL_USERS = 'https://e8wlv8kik5.execute-api.us-east-1.amazonaws.com/default/users'
+  URL_USERS = 'https://dw96994lzd.execute-api.us-west-2.amazonaws.com/default/users'
 
   USER_CREDENTIALS = {
       user: params['user'],
@@ -75,4 +75,3 @@ post '/upload-csv' do
 
 end
 
-get "/rand-question"
