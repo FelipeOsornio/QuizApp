@@ -15,7 +15,7 @@ get '/login' do
 end
 
 def check_questions
-  url_questions = 'https://kdlcriiqz6.execute-api.us-east-1.amazonaws.com/default/questions'
+  url_questions = 'https://4eni1m1l5g.execute-api.us-west-2.amazonaws.com/default/lambda_questions'
 
   response = Faraday.get(url_questions)
 
@@ -57,7 +57,7 @@ def parse_json(csv_file)
 end
 
 post '/upload-csv' do
-  url_questions = 'https://kdlcriiqz6.execute-api.us-east-1.amazonaws.com/default/questions'
+  url_questions = 'https://4eni1m1l5g.execute-api.us-west-2.amazonaws.com/default/lambda_questions'
 
   datafile = params['csv-file']
   QUESTIONS = {
@@ -74,3 +74,5 @@ post '/upload-csv' do
   end
 
 end
+
+get "/rand-question"
