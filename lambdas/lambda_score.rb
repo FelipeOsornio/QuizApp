@@ -27,7 +27,7 @@ end
 
 def get_scores
   items = DYNAMODB.scan(table_name: TABLE_NAME).items
-  items.first(10)
+  items = items.first(10)
   make_response(HttpStatus::OK, make_result_list(items))
 end
 
