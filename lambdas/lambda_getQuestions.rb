@@ -38,7 +38,7 @@ def lambda_handler(event:, context:)
 
   case method
   when 'GET'
-    get_questions(event['params']["n"])
+    get_questions(event['queryStringParameters']['n'].to_i)
 
   end
 
