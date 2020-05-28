@@ -1,0 +1,10 @@
+= General overview
+
+This small application called PINE is comprised of three microservices and the web client.
+
+== Authors
+
+* *A01377154* <em>Felipe Osornio</em>
+* *A01378838* <em>Eric Gómez</em>
+
+
