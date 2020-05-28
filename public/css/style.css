@@ -29,7 +29,7 @@
 }
 
 .is-xlarge {
-    min-height: calc(80vh - 3.25rem);
+    min-height: calc(78vh - 3.25rem);
 }
 
 .has-shadow {
