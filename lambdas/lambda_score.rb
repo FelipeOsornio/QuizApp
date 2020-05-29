@@ -26,9 +26,10 @@ def make_result_list(items)
 end
 
 def get_scores
-  items = DYNAMODB.scan(table_name: TABLE_NAME).items
-  items = items.first(10)
-  make_response(HttpStatus::OK, make_result_list(items))
+  items_db = DYNAMODB.scan(table_name: TABLE_NAME).items
+  items_hash = make_result_list(items_db)
+  items = items_hash.sort_by{|user,score| score}.to_h
+  make_response(HttpStatus::OK, items)
 end
 
 def upload_score(score)
