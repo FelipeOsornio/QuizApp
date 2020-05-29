@@ -36,7 +36,13 @@ def upload_score(score)
 end
 
 def manage_score(body)
-  upload_score(JSON.parse(body)['score'])
+  begin
+    data = (JSON.parse(body)['score'])
+    data.key?('user') and data.key?('score') ? data : nil
+    upload_score(data)
+  rescue JSON::ParserError
+    nil
+  end
   get_scores
 end
 
