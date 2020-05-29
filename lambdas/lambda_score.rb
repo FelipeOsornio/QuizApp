@@ -38,7 +38,7 @@ end
 def manage_score(body)
   begin
     data = (JSON.parse(body)['score'])
-    data.key?('user') and data.key?('score') ? data : nil
+    data = data.key?('user') and data.key?('score') ? data : nil
     upload_score(data)
   rescue JSON::ParserError
     nil
