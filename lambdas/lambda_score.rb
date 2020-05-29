@@ -20,7 +20,7 @@ end
 def make_result_list(items)
   items.map do |item| {
       'user' => item['user'],
-      'pass' => item['pass']
+      'score' => item['score']
   }
   end
 end
