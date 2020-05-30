@@ -37,9 +37,8 @@ def lambda_handler(event:, context:)
   method = event['httpMethod']
 
   case method
-  when 'GET'
-    get_questions(event['queryStringParameters']['n'].to_i)
-
+  when 'POST'
+    get_questions(event['body'])
   end
 
 end

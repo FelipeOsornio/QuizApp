@@ -10,14 +10,22 @@
   </tr>
   </thead>
   <tbody>
+
   <% @questions.each do |question| %>
+
     <tr>
       <td class="question-width"><%= question['Question'] %></td>
+
       <% question['Options'].each do |option| %>
+
         <td><%= option %></td>
+
       <% end %>
+
       <td><%= question['Options'][question['Answer']] %></td>
     </tr>
+
   <% end %>
+
   </tbody>
 </table>

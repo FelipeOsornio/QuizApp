@@ -1,0 +1,68 @@
+<div class="is-centered">
+  <div class="tile is-6 is-vertical is-parent">
+
+    <% @questions.each_with_index do |question, idx| %>
+
+      <div class="tile is-child notification is-info ">
+        <p class="title margin-bottom is-3">Question <%= idx += 1 %></p>
+        <p class="subtitle question-margin"><%= question['Question'] %></p>
+        <div class="margin-horizontal">
+          <p class="title is-3">Answer</p>
+
+          <% question['Options'].each_with_index do |option, opt_idx| %>
+
+            <div class="control">
+              <label class="input-container"><%= option %>
+                <input id="<%= opt_idx %>" type="radio" name="<%= idx %>">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+
+          <% end %>
+
+        </div>
+      </div>
+      <br>
+
+    <% end %>
+
+
+    <form action="/get-feedback" method="get">
+      <button class="button is-warning is-bold is-fullwidth" onclick="sendUserAnswer()">
+        Enviar respuestas
+      </button>
+    </form>
+
+  </div>
+</div>
+
+<script>
+
+    let user_answer = []
+
+    $('input[type="radio"]').on('change', function () {
+
+        $('input[name="' + this.name + '"]').not(this).prop('checked', false)
+
+    })
+
+    function sendUserAnswer() {
+
+        $('input[type="radio"]').map((idx, input) => {
+
+            if (input.checked) user_answer.push(parseInt(input.id))
+
+        })
+
+        $.ajax({
+            type: "POST",
+            url: "/get-feedback",
+            data: {
+                user_answer: JSON.stringify(user_answer)
+            }
+        })
+
+    }
+
+</script>
+
