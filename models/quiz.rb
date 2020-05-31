@@ -1,8 +1,9 @@
 class Quiz
-  attr_accessor :player, :question_answer, :user_answer
+  attr_accessor :player, :questions, :question_answer, :user_answer
 
   def initialize
     @player = nil
+    @questions = []
     @question_answer = []
     @user_answer = []
   end

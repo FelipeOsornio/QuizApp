@@ -64,6 +64,24 @@
     font-weight: bold;
 }
 
+.is-hidden {
+    display: none;
+}
+
+/* Responsive quiz cards */
+
+@media screen and (min-width: 992px) {
+    .quiz-card {
+        width: 800px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .quiz-card {
+        width: 800px;
+    }
+}
+
 /* Check box code taken of W3School  */
 
 /* Container */

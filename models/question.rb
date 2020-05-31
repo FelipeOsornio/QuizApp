@@ -4,12 +4,13 @@ require_relative './print'
 class Question < Print
   attr_accessor :question, :options, :answer
 
-  def initialize(json)
-    data_hash = JSON.parse(json)
+  def initialize(hash)
+    @question = hash['Question']
 
-    @question = data_hash['question']
-    @options = data_hash['options'].split(',').collect(&:strip)
-    @answer = data_hash['answer']
+    @options = []
+    hash['Options'].each {|option| @options << option}
+
+    @answer = hash['Answer']
   end
 
   def print
