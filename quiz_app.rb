@@ -4,12 +4,25 @@ require './models/player'
 require './models/request'
 require './models/question'
 
+class Game
+  attr_accessor :quiz, :player
+
+  def initialize
+    @quiz = Quiz.new
+    @player = Player.new
+  end
+
+  def new_quiz
+    @quiz = Quiz.new
+  end
+
+end
+
 class QuizApp < Sinatra::Base
   URL_GET_QUESTIONS = 'https://zbpbzqjeje.execute-api.us-east-1.amazonaws.com/default/get_questions'
   URL_SCORES = 'https://ezq2yyaea4.execute-api.us-east-1.amazonaws.com/default/scores'
 
-  quiz = Quiz.new
-  player = Player.new
+  game = Game.new
 
   get '/' do
     @title_page = 'Pine app'
@@ -23,14 +36,14 @@ class QuizApp < Sinatra::Base
 
   post '/scores' do
     @title_page = 'Scores'
-    player.score = params['grade'].to_i
+    game.player.score = params['grade'].to_i
 
-    @username = player.username
-    @score = player.score
+    @username = game.player.username
+    @score = game.player.score
 
     response = Request.post_request(URL_SCORES, {
-        username: player.username,
-        score: player.score
+        username: game.player.username,
+        score: game.player.score
     })
 
     @scores = Request.manage_response(response)
@@ -39,11 +52,11 @@ class QuizApp < Sinatra::Base
   end
 
   post '/quiz' do
-    quiz = Quiz.new
+    game.new_quiz
     @title_page = 'Quiz app'
 
     number_questions = params['question_number'].to_i
-    player.username = params['username']
+    game.player.username = params['username']
 
     if number_questions < 1 or number_questions > 10
       redirect '/start-quiz'
@@ -55,11 +68,11 @@ class QuizApp < Sinatra::Base
       questions_response = Request.manage_response(response)
 
       questions_response.each do |question|
-        quiz.question_answer << question['Answer']
-        quiz.questions << Question.new(question)
+        game.quiz.question_answer << question['Answer']
+        game.quiz.questions << Question.new(question)
       end
 
-      @questions = quiz.questions
+      @questions = game.quiz.questions
 
       erb :quiz, layout: :template
     end
@@ -69,14 +82,15 @@ class QuizApp < Sinatra::Base
     @title_page = 'Feedback'
 
     answers = []
-    params.each { |question, answer| quiz.user_answer << answer.to_i }
+    params.each { |question, answer| game.quiz.user_answer << answer.to_i }
 
-    player.score = (quiz.number_corrects * 100) / quiz.question_answer.length
-    @feedback = player.score
+    game.player.score = (game.quiz.number_corrects * 100) / game.quiz.question_answer.length
+    @feedback = game.player.score
 
-    @questions = quiz.questions
-    @user_answer = quiz.user_answer
+    @questions = game.quiz.questions
+    @user_answer = game.quiz.user_answer
 
     erb :feedback, layout: :template
   end
 end
+
