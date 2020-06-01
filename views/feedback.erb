@@ -6,7 +6,7 @@
       <% @questions.each_with_index do |question, idx| %>
 
         <div class="tile is-child notification is-info ">
-          <p class="title margin-bottom is-3">Question <%= idx += 1 %></p>
+          <p class="title margin-bottom is-3">Question <%= idx + 1 %></p>
           <p class="subtitle question-margin"><%= question.question %></p>
           <div class="margin-horizontal">
             <p class="title margin-bottom is-3">Answer</p>

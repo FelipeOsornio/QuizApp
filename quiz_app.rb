@@ -38,6 +38,7 @@ post '/scores' do
 end
 
 post '/quiz' do
+  quiz = Quiz.new
   @title_page = 'Quiz app'
 
   number_questions = params['question_number'].to_i
