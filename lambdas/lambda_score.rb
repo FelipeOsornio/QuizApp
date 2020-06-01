@@ -19,8 +19,8 @@ end
 
 def make_result_list(items)
   items.map do |item| {
-      'user' => item['user'],
-      'score' => item['score']
+      'username' => item['username'],
+      'score' => item['score'].to_i
   }
   end
 end
@@ -28,8 +28,8 @@ end
 def get_scores
   items_db = DYNAMODB.scan(table_name: TABLE_NAME).items
   items_hash = make_result_list(items_db)
-  items = items_hash.sort_by{|user,score| score}.to_h
-  make_response(HttpStatus::OK, items)
+  items = items_hash.sort_by { |hash| hash['score'] }
+  make_response(HttpStatus::OK, items.reverse().first(10))
 end
 
 def upload_score(score)
@@ -38,8 +38,7 @@ end
 
 def manage_score(body)
   begin
-    data = (JSON.parse(body)['score'])
-    data = data.key?('user') and data.key?('score') ? data : nil
+    data = JSON.parse(body)
     upload_score(data)
   rescue JSON::ParserError
     nil
@@ -48,12 +47,12 @@ def manage_score(body)
 end
 
 def lambda_handler(event:, context:)
-    method = event['httpMethod']
+  method = event['httpMethod']
 
-    case method
-    when 'GET'
-      get_scores
-    when 'POST'
-      manage_score(event['body'])
-    end
+  case method
+  when 'GET'
+    get_scores
+  when 'POST'
+    manage_score(event['body'])
+  end
 end

@@ -38,7 +38,7 @@ def lambda_handler(event:, context:)
 
   case method
   when 'POST'
-    get_questions(event['body'])
+    get_questions(JSON.parse(event['body'])['number'].to_i)
   end
 
 end
