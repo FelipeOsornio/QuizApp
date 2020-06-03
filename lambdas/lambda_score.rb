@@ -18,10 +18,11 @@ def make_response(status, body)
 end
 
 def make_result_list(items)
-  items.map do |item| {
-      'username' => item['username'],
-      'score' => item['score'].to_i
-  }
+  items.map do |item|
+    {
+        'username' => item['username'],
+        'score' => item['score'].to_i
+    }
   end
 end
 
@@ -33,7 +34,7 @@ def get_scores
 end
 
 def upload_score(score)
-  DYNAMODB.put_item({table_name: TABLE_NAME,item: score})
+  DYNAMODB.put_item({table_name: TABLE_NAME, item: score})
 end
 
 def manage_score(body)

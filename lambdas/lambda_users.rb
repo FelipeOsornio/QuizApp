@@ -24,10 +24,11 @@ def parse_body(body)
 end
 
 def make_result_list(items)
-  items.map do |item| {
-      'User' => item['User'],
-      'Password' => item['Password']
-  }
+  items.map do |item|
+    {
+        'User' => item['User'],
+        'Password' => item['Password']
+    }
   end
 end
 
@@ -41,7 +42,7 @@ def compare_user(body)
   if data
     res = make_response('', '')
 
-    items.each{ |user|
+    items.each { |user|
       if user['User'] == data['user'] and user['Password'] == data['pass']
         res = make_response(HttpStatus::OK, {message: 'allowed'})
       elsif user['User'] != data['user']

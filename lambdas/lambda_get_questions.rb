@@ -11,11 +11,12 @@ class HttpStatus
 end
 
 def make_result_list(items)
-  items.map do |item| {
-      'Question' => item['Question'],
-      'Options' => item['Options'].split(',').collect(&:strip),
-      'Answer' => item['Answer'].to_i,
-  }
+  items.map do |item|
+    {
+        'Question' => item['Question'],
+        'Options' => item['Options'].split(',').collect(&:strip),
+        'Answer' => item['Answer'].to_i,
+    }
   end
 end
 

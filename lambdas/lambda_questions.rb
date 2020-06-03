@@ -11,11 +11,12 @@ class HttpStatus
 end
 
 def make_result_list(items)
-  items.map do |item| {
-      'Question' => item['Question'],
-      'Options' => item['Options'].split(',').collect(&:strip),
-      'Answer' => item['Answer'].to_i,
-  }
+  items.map do |item|
+    {
+        'Question' => item['Question'],
+        'Options' => item['Options'].split(',').collect(&:strip),
+        'Answer' => item['Answer'].to_i,
+    }
   end
 end
 
@@ -26,8 +27,12 @@ def make_response(status, body)
   }
 end
 
+def get_items
+  DYNAMODB.scan(table_name: TABLE_NAME).items
+end
+
 def get_questions
-  items = DYNAMODB.scan(table_name: TABLE_NAME).items
+  items = get_items
   make_response(HttpStatus::OK, make_result_list(items))
 end
 
@@ -38,6 +43,28 @@ def upload_questions(questions)
                           item: question
                       })
   end
+end
+
+def delete_questions
+  items = get_items
+
+
+  keys = []
+  items.map do |item|
+    keys << {
+        'Question' => item['Question'],
+        'Answer' => item['Answer'].to_i
+    }
+  end
+
+  keys.each do |key|
+    DYNAMODB.delete_item({
+                             table_name: TABLE_NAME,
+                             key: key
+                         })
+  end
+
+  make_response(HttpStatus::OK, {meesage: 'questions deleted'})
 end
 
 def manage_question(body)
@@ -54,6 +81,9 @@ def lambda_handler(event:, context:)
 
   when 'POST'
     manage_question(event['body'])
+
+  when 'DELETE'
+    delete_questions
 
   end
 
