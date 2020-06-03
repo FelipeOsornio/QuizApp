@@ -56,17 +56,18 @@ def quiz
       $game.quiz.question_answer << question['Answer']
       $game.quiz.questions << Question.new(question)
     end
-
     @questions = $game.quiz.questions
-
-    erb :quiz, layout: :template
+    if @questions.empty?
+      redirect '/start-quiz'
+    else
+      erb :quiz, layout: :template
+    end
   end
 end
 
 def get_feedback
   @title_page = 'Feedback'
 
-  answers = []
   params.each { |question, answer| $game.quiz.user_answer << answer.to_i }
 
   $game.player.score = ($game.quiz.number_corrects * 100) / $game.quiz.question_answer.length

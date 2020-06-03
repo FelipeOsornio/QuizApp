@@ -16,10 +16,11 @@ def check_questions
   if response.success?
     data = JSON.parse(response.body)
   end
+
 end
 
 def question
-  @title_page = 'Questions'
+  @title_page = 'Login'
   response = Request.post_request(URL_USERS, {
       user: params['user'],
       pass: params['pass']
@@ -50,10 +51,13 @@ end
 
 def upload_csv
   datafile = params['csv-file']
-
-  response = Request.post_request(URL_QUESTION, {
-      questions: parse_json(datafile['tempfile'])
-  })
+  begin
+    response = Request.post_request(URL_QUESTION, {
+        questions: parse_json(datafile['tempfile'])
+    })
+  rescue
+    redirect '/upload-csv'
+  end
 
   if response.success?
     @questions = JSON.parse(response.body)
@@ -63,5 +67,7 @@ end
 
 def delete_questions
   response = Request.delete_request(URL_QUESTION)
-  redirect '/upload-csv'
+  if response.success?
+    redirect '/upload-csv'
+  end
 end
