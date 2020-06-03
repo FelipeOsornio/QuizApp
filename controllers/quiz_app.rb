@@ -1,4 +1,3 @@
-require 'sinatra'
 require './models/game'
 require './models/request'
 require './models/question'
@@ -57,6 +56,7 @@ def quiz
       $game.quiz.questions << Question.new(question)
     end
     @questions = $game.quiz.questions
+
     if @questions.empty?
       redirect '/start-quiz'
     else

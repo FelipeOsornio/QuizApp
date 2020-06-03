@@ -1,5 +1,4 @@
 require 'sinatra/base'
-require './models/game'
 require './controllers/quiz_app'
 require './controllers/manager_app'
 

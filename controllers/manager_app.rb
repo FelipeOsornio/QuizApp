@@ -1,6 +1,7 @@
 require 'csv'
 require 'daru'
-require 'sinatra'
+require './models/user'
+require './models/question'
 
 URL_USERS = 'https://e8wlv8kik5.execute-api.us-east-1.amazonaws.com/default/users'
 URL_QUESTION = 'https://kdlcriiqz6.execute-api.us-east-1.amazonaws.com/default/questions'
@@ -12,18 +13,23 @@ end
 
 def check_questions
   response = Request.get_request(URL_QUESTION)
-
+  questions = []
   if response.success?
-    data = JSON.parse(response.body)
+    data = Request.manage_response(response)
   end
-  data
+  data.each do |question|
+    questions << Question.new(question)
+  end
+  questions
 end
 
 def question
-  @title_page = 'Login'
+  @title_page = 'Question'
+  user_obj = User.new(params['user'],params['pass'])
+
   response = Request.post_request(URL_USERS, {
-      user: params['user'],
-      pass: params['pass']
+      user: user_obj.user,
+      pass: user_obj.pass
   })
 
   if response.success?
@@ -58,9 +64,12 @@ def upload_csv
   rescue
     redirect '/upload-csv'
   end
-
+  @questions = []
   if response.success?
-    @questions = JSON.parse(response.body)
+    data = Request.manage_response(response)
+    data.each do |question|
+      @questions << Question.new(question)
+    end
     erb :table, layout: :session
   end
 end

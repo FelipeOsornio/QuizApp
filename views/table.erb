@@ -15,15 +15,15 @@
     <% @questions.each do |question| %>
 
       <tr>
-        <td class="question-width"><%= question['Question'] %></td>
+        <td class="question-width"><%= question.question %></td>
 
-        <% question['Options'].each do |option| %>
+        <% question.options.each do |option| %>
 
           <td><%= option %></td>
 
         <% end %>
 
-        <td><%= question['Options'][question['Answer']] %></td>
+        <td><%= question.options[question.answer] %></td>
       </tr>
 
     <% end %>
