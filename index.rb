@@ -1,7 +1,7 @@
 require 'sinatra/base'
 require './models/game'
-require './quiz_app'
-require './manager_app'
+require './controllers/quiz_app'
+require './controllers/manager_app'
 
 class Main < Sinatra::Base
 
