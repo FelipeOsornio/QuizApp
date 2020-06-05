@@ -78,4 +78,3 @@ def get_feedback
 
   erb :feedback, layout: :template
 end
-

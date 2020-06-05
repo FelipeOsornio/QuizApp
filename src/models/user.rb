@@ -1,7 +1,6 @@
 require 'json'
-require_relative './print'
 
-class User < Print
+class User
   attr_accessor :user, :pass
 
   def initialize(user_name, password)
@@ -13,10 +12,6 @@ class User < Print
     encrypted = ""
     @pass.each_char {|i| encrypted += "*"}
     encrypted
-  end
-
-  def print
-    "Question { user => #{@user}, pass => #{hide} }"
   end
 
 end

@@ -1,7 +1,6 @@
 require 'json'
-require_relative './print'
 
-class Question < Print
+class Question
   attr_accessor :question, :options, :answer
 
   def initialize(hash)
@@ -13,7 +12,4 @@ class Question < Print
     @answer = hash['Answer']
   end
 
-  def print
-    "Question { question => #{@question}, options => #{@options}, answer => #{@answer} }"
-  end
 end
