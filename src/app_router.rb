@@ -2,7 +2,7 @@ require 'sinatra/base'
 require './controllers/quiz_app'
 require './controllers/manager_app'
 
-class Main < Sinatra::Base
+class App_Router < Sinatra::Base
 
   # Quiz routes
   get '/' do
@@ -47,7 +47,7 @@ class Main < Sinatra::Base
   end
 end
 
-Main.run!
+App_Router.run!
 
 
 
