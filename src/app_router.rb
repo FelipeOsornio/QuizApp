@@ -17,7 +17,7 @@ class App_Router < Sinatra::Base
     start_quiz
   end
 
-  # Route that receives the score of each quiz and render back the top 10 table of scores
+  # Route that receives and saves the score of each quiz and render back the top 10 table of scores
   post '/scores' do
     scores
   end
