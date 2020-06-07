@@ -1,5 +1,6 @@
 require 'csv'
 require 'daru'
+require './models/request'
 require './models/user'
 require './models/question'
 
@@ -61,7 +62,7 @@ def view_upload_csv
   erb :upload, layout: :session
 end
 
-# Function that saves the question into the DB and then render the table with question
+# Function that saves the questions into the DB and then render the table with questions
 def upload_csv
   datafile = params['csv-file']
   begin
@@ -81,7 +82,7 @@ def upload_csv
   end
 end
 
-# Function that
+# Function that flush the question pool in the DB
 def delete_questions
   response = Request.delete_request(URL_QUESTION)
   if response.success?

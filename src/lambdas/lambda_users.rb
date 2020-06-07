@@ -1,15 +1,18 @@
 require 'json'
 require 'aws-sdk-dynamodb'
 
+# DynamoDB constants
 DYNAMODB = Aws::DynamoDB::Client.new
 TABLE_NAME = 'Users'
 
+# Class that represents the http status
 class HttpStatus
   OK = 200
   CREATED = 201
   FORBIDDEN = 403
 end
 
+# Function that returns the hash of a given json
 def parse_body(body)
   if body
     begin
@@ -23,6 +26,7 @@ def parse_body(body)
   end
 end
 
+# Function that returns a hashed list of items
 def make_result_list(items)
   items.map do |item|
     {
@@ -32,12 +36,11 @@ def make_result_list(items)
   end
 end
 
+# Function that validates a given user
 def compare_user(body)
   data = parse_body(body)
 
   items = DYNAMODB.scan(table_name: TABLE_NAME).items
-  users = make_result_list(items)
-
 
   if data
     res = make_response('', '')
@@ -57,6 +60,7 @@ def compare_user(body)
 
 end
 
+# Function that generates a http response with their status and body
 def make_response(status, body)
   {
       statusCode: status,
@@ -64,6 +68,7 @@ def make_response(status, body)
   }
 end
 
+# Fuction that handles the http requests to the lambda
 def lambda_handler(event:, context:)
   method = event['httpMethod']
 
