@@ -2,7 +2,7 @@ require './models/game'
 require './models/request'
 require './models/question'
 
-#url of AWS lambdas
+# url of AWS lambdas
 URL_GET_QUESTIONS = 'https://zbpbzqjeje.execute-api.us-east-1.amazonaws.com/default/get_questions'
 URL_SCORES = 'https://ezq2yyaea4.execute-api.us-east-1.amazonaws.com/default/scores'
 
