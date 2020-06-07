@@ -12,6 +12,7 @@ This small application called PINE is comprised of three microservices and the w
 
 == 4+1 architectural view model
 === Logical view
+rdoc-image:img/logial-view.png
 === Process view
 === Development view
 === Physical view
