@@ -9,6 +9,9 @@ This small application called PINE is comprised of three microservices and the w
 * *A01378916* <em>Rafael Moreno Cañas</em>
 
 == Installing and Running the Application
+To run the web application, inside the +src+ folder type the following
+instruction at the command line:
+    ruby app_router.rb
 
 == 4+1 architectural view model
 === Logical view
