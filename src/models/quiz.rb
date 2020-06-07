@@ -1,13 +1,15 @@
+# Class that models a quiz object
 class Quiz
-  attr_accessor :player, :questions, :question_answer, :user_answer
+  attr_accessor :questions, :question_answer, :user_answer
 
+  # Function that initialize the quiz object attributes
   def initialize
-    @player = nil
     @questions = []
     @question_answer = []
     @user_answer = []
   end
 
+  # Function that returns the number of correct answers in the quiz
   def number_corrects
     corrects = 0
 
