@@ -17,6 +17,7 @@ instruction at the command line:
 === Logical view
 rdoc-image:img/logical-view.png
 === Process view
+rdoc-image:img/process-view.png
 === Development view
 === Physical view
 === Scenarios (Use case view)
