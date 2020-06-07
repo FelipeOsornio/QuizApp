@@ -8,3 +8,15 @@ This small application called PINE is comprised of three microservices and the w
 * *A01378838* <em>Eric Gómez</em>
 * *A01378916* <em>Rafael Moreno Cañas</em>
 
+== Installing and Running the Application
+
+== 4+1 architectural view model
+=== Logical view
+=== Process view
+=== Development view
+=== Physical view
+=== Scenarios (Use case view)
+
+== Patterns used
+
+== References
