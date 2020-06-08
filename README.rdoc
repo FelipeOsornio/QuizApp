@@ -1,9 +1,9 @@
 = General overview
 This is a web app to manage and take quizzes and it's written in ruby code.
 
-Inside the app you can upload a csv files to fill the pool of questions, but this file need to be formated in the same way that apears at the root of this repository.
+Inside the app you can upload a csv files to fill the pool of questions, but this file need to be formatted in the same way that appears at the root of this repository.
 
-Once you have uploaded the questions you can genereate a new quiz, submiting a nickname and  the number of questions that you want.
+Once you have uploaded the questions you can generate a new quiz, submitting a nickname and the number of questions that you want.
 
 == Authors
 
@@ -28,6 +28,10 @@ rdoc-image:img/physical-view.png
 rdoc-image:img/scenarios.png
 
 == Patterns used
+* *Model-View-Controller* :
+* *Adapter* :
+* *Domain-Specific Language* :
+* *Command* :
 
 == References
 - \R. Olsen. <em>Design Patterns in Ruby.</em> Addison-Wesley, 2007.
