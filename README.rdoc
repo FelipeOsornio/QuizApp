@@ -1,7 +1,9 @@
 = General overview
 
-=begin This is a web app to manage and take quizzes and it's written in ruby code. =end
+This is a web app to manage and take quizzes and it's written in ruby code.
+===
 Inside the app you can upload a csv files to fill the pool of questions, but this file need to be formated in the same way that apears at the root of this repository.
+===
 Once you have uploaded the questions you can genereate a new quiz, submiting a nickname and  the number of questions that you want.
 
 == Authors
