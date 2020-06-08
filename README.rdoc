@@ -19,6 +19,7 @@ rdoc-image:img/logical-view.png
 === Process view
 rdoc-image:img/process-view.png
 === Development view
+rdoc-image:img/development-view.png
 === Physical view
 === Scenarios (Use case view)
 
