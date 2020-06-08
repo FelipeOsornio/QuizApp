@@ -28,7 +28,7 @@ rdoc-image:img/physical-view.png
 rdoc-image:img/scenarios.png
 
 == Patterns used
-* *Model-View-Controller* :
+* *Model-View-Controller* : The application follows the classical web implementation of the MVC architectural pattern. The models (.rb files) and views (.erb files) are stored in the corresponding models and views directory. The controller are the (.rb files) inside of controllers directory and the app_router.rb
 * *Adapter* :
 * *Domain-Specific* *Language* :
 * *Command* :
