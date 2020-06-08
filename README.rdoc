@@ -30,7 +30,7 @@ rdoc-image:img/scenarios.png
 == Patterns used
 * *Model-View-Controller* :
 * *Adapter* :
-* *Domain-Specific Language* :
+* *Domain-Specific* *Language* :
 * *Command* :
 
 == References
