@@ -29,9 +29,9 @@ rdoc-image:img/scenarios.png
 
 == Patterns used
 * *Model-View-Controller* : The application follows the classical web implementation of the MVC architectural pattern. The models (+.rb+ files) and views (+.erb+ files) are stored in the corresponding models and views directory. The controllers are the (+.rb+ files) inside of controllers directory and the +app_router.rb+
-* *Adapter* :
-* *Domain-Specific* *Language* :
-* *Command* :
+* *Adapter* : The model +game.rb+ is an adapter to use the +player.rb+ and +quiz.rb+ inside the controller +quiz_app.rb+.
+* *Domain-Specific* *Language* : The +app_router.rb+ file consists of a series of Sinatra routes. Sinatra is a DSL for creating web applications in Ruby.
+* *Command* : The controllers +quiz_app.rb+ and +manger_app.rb+ contain the concrete commands to each route declared in the +app_router.rb+ , so in this way all the web routes invoke the corresponding command to do a concrete action.
 
 == References
 - \R. Olsen. <em>Design Patterns in Ruby.</em> Addison-Wesley, 2007.
