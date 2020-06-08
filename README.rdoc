@@ -23,7 +23,8 @@ rdoc-image:img/development-view.png
 === Physical view
 rdoc-image:img/physical-view.png
 === Scenarios (Use case view)
-rdoc-image:img/
+rdoc-image:img/scenarios.png
+
 == Patterns used
 
 == References
