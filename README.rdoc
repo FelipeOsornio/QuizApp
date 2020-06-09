@@ -1,7 +1,7 @@
 = General overview
 This is a web app to manage and take quizzes and it's written in ruby code.
 
-Inside the app you can upload a csv files to fill the pool of questions, but this file need to be formatted in the same way as the file named +sample_40_questions.csv+ that appears at the root of this {<a href="https://github.com/FelipeOsornio/QuizApp"></a>}[repository.]
+Inside the app you can upload a csv files to fill the pool of questions, but this file need to be formatted in the same way as the file named +sample_40_questions.csv+ that appears at the root of this {<a href="https://github.com/FelipeOsornio/QuizApp">repository.</a>}[https://github.com/FelipeOsornio/QuizApp]
 
 Once you have uploaded the questions you can generate a new quiz, submitting a nickname and the number of questions that you want.
 
