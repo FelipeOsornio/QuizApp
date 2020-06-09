@@ -5,7 +5,7 @@ Question,Options,Answer
 "Pattern that uses a technique that allows an aggregate object to provide the outside world with a way to access its collection of subobjects.","Refactoring,Template Method,Iterator,Adapter",2
 "Pattern that defines a family of objects, that do the same things and are interchangeable according to the need of the user.","Strategy,Observer ,Decorator,Command",0
 "Pattern which idea is to build an abstract base class with a skeletal method.","Adapter ,Template Method,Decorator,Command",1
-"Which design  pattern allows you to build components that known the activities of other components without having to couple everything together ?","Strategy,Skeletor,Observer,Adapter",2
+"Which design pattern allows you to build components that known the activities of other components without having to couple everything together ?","Strategy,Skeletor,Observer,Adapter",2
 "An _____ supports the interface that we need on the outside, but it implements that interface by making calls to an object hidden inside.","Instance,Adapter,Architect,Driver",1
 "With this pattern, we construct objects that know how to perform some very specific actions, this pattern also encapsulates a request as an object.","Decorator,Iterator,Command,Adapter",2
 "The____ pattern also allows you to layer features atop one another so that you can construct objects that have exactly the right set of capabilities that you need for any given situation.","Decorator,Strategy,Command,Iterator",0
